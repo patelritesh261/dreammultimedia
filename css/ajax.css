@@ -1,0 +1,33 @@
+﻿body {
+}
+/*AutoComplete flyout */
+.completionListElement 
+{  
+    visibility : hidden; 
+    margin : 0px! important; 
+    background-color : inherit; 
+    color : black; 
+    border : solid 1px gray; 
+    cursor : pointer; 
+    text-align : left; 
+    list-style-type : none; 
+    font-family : Verdana; 
+    font-size: 11px; 
+    padding : 0; 
+    z-index:101;
+    border-radius: 15px 15px 15px 15px; 
+     
+}
+/* AutoComplete item */ 
+.listItem 
+{ 
+    background-color: white; 
+    padding : 1px; 
+    border-radius: 15px 15px 15px 15px; 
+}      
+/* AutoComplete highlighted item */
+.highlightedListItem 
+{ 
+    background-color: #c3ebf9; 
+    padding : 1px; 
+}

@@ -1,0 +1,206 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>Corporattica</title>
+	<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+	<script type="text/javascript" src="js/menu.js"></script>
+	<script type="text/javascript" src="js/slideshow.js"></script>
+	<script type="text/javascript" src="js/cufon-yui.js"></script>
+	<script type="text/javascript" src="js/Arial.font.js"></script>
+	<script type="text/javascript">
+		Cufon.replace('h1,h2,h3,h4,h5,#menu,#copy,.blog-date');
+	</script>
+	
+	<script>!window.jQuery && document.write(unescape('%3Cscript src="jquery-1.7.1.min.js"%3E%3C/script%3E'))</script>
+	<script type="text/javascript" src="js/modernizr.js"></script>
+	<script type="text/javascript" src="js/demo.js"></script>
+    
+	<%--<script type="text/javascript" src="js/fancyzoom.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$('div.photo a').fancyZoom({directory: 'images/zoom', scaleImg: true, closeOnClick: true});
+		});
+	</script>--%>
+    
+	<link rel="stylesheet" href="css/main.css" type="text/css" />
+    <link href="css/ajax.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="scManager" runat="server"  EnableViewState="true">
+    </asp:ScriptManager>
+    
+    <div id="bg">
+		
+		<div class="wrap"> 	
+			<!-- logo -->
+			<%--<a href="Default.aspx" > <img src="Admin/images/shared/dream_logo.jpg" width="141" /></a>  --%>
+			<a href="Default.aspx" style="color:White; font-size:30px; float:left;     "    ><img src="Admin/images/dmlogo2.png" height="90" width="151" />    </a>
+			<!-- /logo -->
+			<div id="mainmenuup">
+			 
+			 <div style=" line-height:32px; color:#000000; background-color:#FFFFFF; float:right;   text-align: center; border-radius:5px 5px 5px 5px; margin:5px  7px 0 0; width: 240px;">
+            <asp:UpdatePanel ID="upcart" runat="server">
+                            <ContentTemplate>
+                                <a href="Cart.aspx" class="btncheckoutop" title="Checkout">
+                                </a>
+                                    <asp:Literal ID="ltrcountcartitems" runat="server"></asp:Literal>
+                                    Item(s),
+                                    <asp:Literal ID="ltrtotalprice" runat="server" Text="0.00"></asp:Literal>
+                            </ContentTemplate>
+            </asp:UpdatePanel>
+        
+            </div>
+            <div style="float:right; padding:20px 20px 0 0; "  >
+            
+	            
+                           <div id="login" runat="server"  >
+                        <span>Hi,&nbsp;<asp:Label ID="lbluname" runat="server" Text=""  ></asp:Label></span>|<a href="myaccount.aspx"
+                            title="My Account"> My Account</a> | <a href="signin.aspx?flag=logout"
+                                title="Logout">Logout</a></div>
+                        
+                           <div id="reg" runat="server"  >
+                        <a href="signin.aspx" title="Login">Login</a> | <a href="signup.aspx"  title="Register">
+                            Register</a>
+                               
+                            </div>
+                        
+                       
+                     </div>
+             
+                    
+			</div>
+			
+			<!-- menu -->
+			<div id="mainmenu">
+		        
+			    
+				<ul id="menu">
+					<li><a class="current" href="Default.aspx">Home</a></li>
+					<li><a href="">Category</a>
+						<ul><li><a href="Category.aspx?id=2">Image</a></li><li><a href="Category.aspx?id=3">Video</a></li><li><a href="Category.aspx?id=4">Audio</a></li></ul>
+					</li>
+					<%--<li><a href="portfolio.html">Portfolio</a></li>--%>
+					<li><a href="Newslist.aspx" >News</a></li>
+					<li><a href="AboutUS.aspx" >About Us</a></li>
+					<li><a href="Contact.aspx" >Contact Us</a></li>
+					<li><div id="search" >
+					<asp:Panel ID="panal3" runat="server" DefaultButton="btnsearch">  
+                         <asp:TextBox ID="txtsearch" runat="server" CssClass="roundedleft"   ></asp:TextBox><asp:Button ID="btnsearch" runat="server" Text ="search" Class="roundedright" 
+                             onclick="btnsearch_Click"  /> 
+                             <cc1:AutoCompleteExtender
+                runat="server" 
+                BehaviorID="AutoCompleteEx"
+                ID="autoComplete1" 
+                TargetControlID="txtsearch"
+                ServicePath="Search.asmx" 
+                ServiceMethod="searchdata"
+                MinimumPrefixLength="1" 
+                CompletionInterval="1000"
+                EnableCaching="true"
+                CompletionSetCount="10"
+                CompletionListCssClass="completionListElement " 
+                CompletionListItemCssClass="listItem " 
+                CompletionListHighlightedItemCssClass="highlightedListItem "
+                DelimiterCharacters=";, :"
+                ShowOnlyCurrentWordInCompletionListItem="true" >
+                
+            </cc1:AutoCompleteExtender> </asp:Panel>
+                       </div>
+                   </li>
+				</ul>
+				
+				
+			</div>   
+    
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        </div> 
+        <%--<div id="footer">
+			<div id="footerbg">
+				<div class="wrap">
+				
+					<!-- footer links -->
+					<p id="footer_menu">
+						<a href="#">Jobs @ corporattica</a>
+						<a href="#">Press Releases</a>
+						<a href="#">Terms and Conditions</a>
+						
+						<!-- credit link -->
+						<a href="http://www.solucija.com" title="Free CSS Templates">Solucija</a>
+					</p>
+					<!-- /footer links -->
+					
+					<p id="copy">corporattica <span>professional approach</span></p>
+					
+					<div class="clear"></div>
+				</div>
+			</div>
+    </div>--%>
+    <div id="footer">
+    <div id="footerbg">
+				<div class="wrap">
+		<div class="fo1">
+		<h2>Shop Stock</h2>
+		<ul type="none">
+		    <li><a id="footer-homepage" href="Default.aspx">Homepage</a></li>
+		    <li><a id="footer-photos" href="Category.aspx?id=2">Photos</a></li>
+		    
+		    <li><a id="footer-video" href="Category.aspx?id=3">Video</a></li>
+		    <li><a id="footer-audio" href="Category.aspx?id=4">Audio</a></li>
+		   
+		</ul>
+		</div>
+		<div class="fo1">
+		<h2>Participate</h2>
+		<ul type="none">
+		    <li><a id="footer-articles" href="Privacy.aspx">Privacy</a></li>
+		    
+		    
+		    <li><a id="footer-design-spotlight" href="Term_of_use.aspx" >Term of Use</a></li>
+		  
+		    
+		    </ul>
+		    </div>
+		<div class="fo1">
+		<h2>Learn More</h2>
+		<ul type="none">
+		    <li><a id="footer-buy-with-credits" href="Packagesub.aspx">Buy With Credits</a></li>
+		    
+		        
+		        <li><a id="footer-sell-stock" href="Topsell.aspx">Sell Stock</a></li>
+		       
+		</ul>
+		</div>
+	<div class="fo1">
+		    <h2>Company Info</h2>
+		    <ul type="none">
+		        <li><a  href="Aboutus.aspx">About Us</a></li>
+		        <li><a  href="Sitemap.aspx" target="_blank">SiteMap</a></li>
+		        
+		       
+		     </ul>
+		     </div>
+		     <div class="fo2">
+		     <h2>Need Help?</h2>
+		     <ul type="none">
+		        
+		        <li><a  href="FAQ.aspx" >FAQ</a></li>
+		        
+		        
+		        <li><a  href="Contact.aspx" >Contact Us</a></li>
+		       </ul>
+		      </div>
+        </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>
